@@ -207,6 +207,7 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
+<<<<<<< HEAD
 
 add_executable(dumbot_control_node src/dumbot_control_node.cpp)
 add_executable(dumbot_feedback_node src/dumbot_feedback_node.cpp)
@@ -214,3 +215,8 @@ target_link_libraries(dumbot_control_node ${catkin_LIBRARIES})
 target_link_libraries(dumbot_feedback_node ${catkin_LIBRARIES})
 add_dependencies(dumbot_control_node ${catkin_EXPORTED_TARGETS})
 add_dependencies(dumbot_control_node ${catkin_EXPORTED_TARGETS})
+=======
+add_executable(dumbot_control_node dumbot_control_node.cpp)
+target_link_libraries(dumbot_control_node ${catkin_LIBRARIES})
+
+>>>>>>> d40a2e06963008df3abbb824a115412b0aa80c3f
