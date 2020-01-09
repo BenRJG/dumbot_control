@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="dumbot_control" type="dumbot_control_node" name="dumbot_control" output="screen" />
+  <node pkg="dumbot_control" type="dumbot_feedback_node" name="dumbot_feedback" />
+</launch>
