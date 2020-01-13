@@ -5,6 +5,7 @@
 #include "std_msgs/UInt8.h"
 #include "ds4_driver/Feedback.h"
 #include "std_msgs/Int8MultiArray.h"
+#include "dumbot_control/timeOfFlight.h"
 
 #define gotoxy(x,y) printf("\033[%d;%df", (y), (x))
 #define clear() printf("\033[H\033[J")
@@ -20,7 +21,10 @@ sensor_msgs::JoyFeedbackArray rumble;
 
 sensor_msgs::Joy joy;
 ds4_driver::Feedback controllerFeedback;
+
 //std_msgs::String button_pressed = {"Square","Triangle","Circle","X","L1","L2","R1","R2","Share","Options","Home","Touch Pad","L3","R3","Left","Up","Right","Down"};
+
+float measureConversion = 
 
 
 class proximity
@@ -51,14 +55,14 @@ public:
 		controller_pub.publish(controllerFeedback);
 	}
 
-	void chatterCallback(const std_msgs::Int8MultiArray::ConstPtr& msg) // Change this variable for inputs
+	void chatterCallback(const dumbot_control::timeOfFlight::ConstPtr& sensorData) // Change this variable for inputs
 	{		
 		
 		controllerFeedback.set_led = true;
-		controllerFeedback.led_r = 1.0 * (1-(msg->data[0]/255.0));
-		controllerFeedback.led_g = 1.0 * (msg->data[0]/255.0);
+		controllerFeedback.led_r = 1.0 * (1-(sensorData->sensor1/255.0));
+		controllerFeedback.led_g = 1.0 * (sensorData->sensor1/255.0);
 		controllerFeedback.led_b = 0.0;
-		if(msg->data[0] < 40)
+		if(sensorData->sensor1 < 40)
 		{
 			//rumble.data[] = 1;			
 			//controller_pub.publish(rumble);
@@ -95,7 +99,8 @@ public:
 			controller_pub.publish(controllerFeedback);
 
 		}
-		printf("%d\n\r",msg->data[0]);
+		gotoxy(29,1);
+		printf("%03d\n\r",sensorData->sensor1);
 	}
 
 protected:
