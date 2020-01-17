@@ -24,8 +24,6 @@ ds4_driver::Feedback controllerFeedback;
 
 //std_msgs::String button_pressed = {"Square","Triangle","Circle","X","L1","L2","R1","R2","Share","Options","Home","Touch Pad","L3","R3","Left","Up","Right","Down"};
 
-float measureConversion = 
-
 
 class proximity
 {
@@ -99,8 +97,30 @@ public:
 			controller_pub.publish(controllerFeedback);
 
 		}
+
 		gotoxy(29,1);
-		printf("%03d\n\r",sensorData->sensor1);
+		if(sensorData->sensor1 > 0){printf("%03d\n\r",sensorData->sensor1);}else{printf("XXX");}
+		
+		gotoxy(52,6);
+		if(sensorData->sensor2 > 0){printf("%03d\n\r",sensorData->sensor2);}else{printf("XXX");}
+
+		gotoxy(57,14);
+		if(sensorData->sensor3 > 0){printf("%03d\n\r",sensorData->sensor3);}else{printf("XXX");}
+
+		gotoxy(52,22);
+		if(sensorData->sensor4 > 0){printf("%03d\n\r",sensorData->sensor4);}else{printf("XXX");}
+
+		gotoxy(29,27);
+		if(sensorData->sensor5 > 0){printf("%03d\n\r",sensorData->sensor5);}else{printf("XXX");}
+
+		gotoxy(6,22);
+		if(sensorData->sensor6 > 0){printf("%03d\n\r",sensorData->sensor6);}else{printf("XXX");}
+
+		gotoxy(1,14);
+		if(sensorData->sensor7 > 0){printf("%03d\n\r",sensorData->sensor7);}else{printf("XXX");}
+
+		gotoxy(6,6);
+		if(sensorData->sensor8 > 0){printf("%03d\n\r",sensorData->sensor8);}else{printf("XXX");}
 	}
 
 protected:

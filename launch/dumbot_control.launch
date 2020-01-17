@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-  <node pkg="dumbot_control" type="dumbot_control_node" name="dumbot_control" output="screen" />
-  <node pkg="dumbot_control" type="dumbot_feedback_node" name="dumbot_feedback" />
+  <node pkg="dumbot_control" type="dumbot_control_node" name="dumbot_control"  />
+  <node pkg="dumbot_control" type="dumbot_feedback_node" name="dumbot_feedback" output="screen" />
+
+  <node pkg="ds4_driver" type="ds4_driver_node.py" name="ds4_driver"/>
 </launch>
